@@ -12,7 +12,8 @@ function App() {
   const [sourceCode, setSourceCode] = useState('')
 
   const applyCode = () => {
-    headlessRunCode('python', sourceCode, text).then(value => {
+    // HACK: add \n otherwise EOF does not work properly
+    headlessRunCode('python', sourceCode, text+'\n').then(value => {
       if (value.resultType !== 'complete') {
         console.log(`failed to apply source code: ${JSON.stringify(value)}`)
         return
@@ -24,6 +25,7 @@ function App() {
       }
 
       setText(value.stdout)
+      console.log("applied!")
     })
   }
 

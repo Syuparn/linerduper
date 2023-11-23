@@ -1,0 +1,17 @@
+diff --git a/node_modules/@runno/runtime/dist/runtime.js b/node_modules/@runno/runtime/dist/runtime.js
+index 813773f..5645bdf 100644
+--- a/node_modules/@runno/runtime/dist/runtime.js
++++ b/node_modules/@runno/runtime/dist/runtime.js
+@@ -31445,7 +31445,11 @@ async function ry(i, e, t, r) {
+       s.stderr += c, s.tty += c;
+     }
+   });
+-  r && l.pushStdin(r);
++  if (r) {
++    l.pushStdin(r);
++    console.log("HACK: add EOF to avoid hang");
++    l.pushEOF();
++  }
+   const O = await l.start();
+   return s.fs = { ...t, ...O.fs }, s.exitCode = O.exitCode, s;
+ }
