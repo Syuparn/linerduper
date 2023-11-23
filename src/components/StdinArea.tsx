@@ -11,7 +11,7 @@ function StdinArea() {
   }
 
   return (
-    <Textarea className='area'
+    <Textarea className='stdinarea'
       placeholder='Input here and edit with one-liner scripts!'
       size='sm'
       rows={20}

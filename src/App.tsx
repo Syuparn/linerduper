@@ -3,14 +3,16 @@ import { headlessRunCode } from "@runno/runtime"
 import './App.css'
 import StdinArea from './components/StdinArea'
 import { StdinContext } from './contexts/StdinContext'
+import { SourceContext } from './contexts/SourceContext'
+import CodeArea from './components/CodeArea'
 
 function App() {
-  const [output, setOutput] = useState("")
-  const [stdin, setStdin] = useState("")
+  const [text, setText] = useState("")
+  const [sourceCode, setSourceCode] = useState("")
 
   headlessRunCode("python", "print('Hello World!')").then(value => {
     if (value.resultType === "complete") {
-      setOutput(value.stdout)
+      setText(value.stdout)
     }
   })
 
@@ -23,12 +25,10 @@ function App() {
           This works offline by WASI.
         </p>
       </div>
-      <div>
-        <p>
-          Result: {output}
-        </p>
-      </div>
-      <StdinContext.Provider value={{stdin, setStdin}}>
+      <SourceContext.Provider value={{source: sourceCode, setSource: setSourceCode}}>
+        <CodeArea />
+      </SourceContext.Provider>
+      <StdinContext.Provider value={{stdin: text, setStdin: setText}}>
         <StdinArea />
       </StdinContext.Provider>
     </>
