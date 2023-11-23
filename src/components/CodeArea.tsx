@@ -5,7 +5,6 @@ import { SourceContext } from '../contexts/SourceContext'
 function CodeArea() {
   const {source, setSource} = useContext(SourceContext)
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    console.log(source)
     setSource(e.target.value)
   }
 

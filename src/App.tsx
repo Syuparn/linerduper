@@ -12,10 +12,18 @@ function App() {
   const [sourceCode, setSourceCode] = useState("")
 
   const applyCode = () => {
-    headlessRunCode("python", sourceCode).then(value => {
-      if (value.resultType === "complete") {
-        setText(value.stdout)
+    headlessRunCode("ruby", sourceCode, text).then(value => {
+      if (value.resultType !== "complete") {
+        console.log(`failed to apply source code: ${JSON.stringify(value)}`)
+        return
       }
+
+      if (value.stderr !== "") {
+        alert(value.stderr)
+        return
+      }
+
+      setText(value.stdout)
     })
   }
 
