@@ -1,27 +1,36 @@
 import { useState } from 'react'
 import { headlessRunCode } from "@runno/runtime"
 import './App.css'
+import StdinArea from './components/StdinArea'
+import { StdinContext } from './contexts/StdinContext'
 
 function App() {
   const [output, setOutput] = useState("")
+  const [stdin, setStdin] = useState("")
 
   headlessRunCode("python", "print('Hello World!')").then(value => {
     if (value.resultType === "complete") {
-      setOutput(value.stdout);
+      setOutput(value.stdout)
     }
-  });
+  })
 
   return (
     <>
-      <h1>Vite + React</h1>
-      <div className="card">
+      <h1>LinerDuper</h1>
+      <div className='subtitle'>
+        <p>
+          A tiny text editor for one-liner lovers!<br />
+          This works offline by WASI.
+        </p>
+      </div>
+      <div>
         <p>
           Result: {output}
         </p>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
+      <StdinContext.Provider value={{stdin, setStdin}}>
+        <StdinArea />
+      </StdinContext.Provider>
     </>
   )
 }
