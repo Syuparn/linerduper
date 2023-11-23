@@ -1,6 +1,5 @@
 import { Textarea } from '@chakra-ui/react'
 import { useContext } from 'react'
-import './StdinArea.css'
 import { StdinContext } from '../contexts/StdinContext'
 
 function StdinArea() {
@@ -13,7 +12,7 @@ function StdinArea() {
   return (
     <Textarea className='stdinarea'
       placeholder='Input here and edit with one-liner scripts!'
-      size='sm'
+      fontSize='xl'
       rows={20}
       height='auto'
       value={stdin}

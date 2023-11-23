@@ -1,36 +1,60 @@
+import { HStack, Text, VStack } from '@chakra-ui/react'
 import { useState } from 'react'
 import { headlessRunCode } from "@runno/runtime"
-import './App.css'
 import StdinArea from './components/StdinArea'
 import { StdinContext } from './contexts/StdinContext'
 import { SourceContext } from './contexts/SourceContext'
 import CodeArea from './components/CodeArea'
+import ApplyButton from './components/ApplyButton'
 
 function App() {
   const [text, setText] = useState("")
   const [sourceCode, setSourceCode] = useState("")
 
-  headlessRunCode("python", "print('Hello World!')").then(value => {
-    if (value.resultType === "complete") {
-      setText(value.stdout)
-    }
-  })
+  const applyCode = () => {
+    headlessRunCode("python", sourceCode).then(value => {
+      if (value.resultType === "complete") {
+        setText(value.stdout)
+      }
+    })
+  }
 
   return (
     <>
-      <h1>LinerDuper</h1>
-      <div className='subtitle'>
-        <p>
-          A tiny text editor for one-liner lovers!<br />
-          This works offline by WASI.
-        </p>
-      </div>
       <SourceContext.Provider value={{source: sourceCode, setSource: setSourceCode}}>
-        <CodeArea />
+        <StdinContext.Provider value={{stdin: text, setStdin: setText}}>
+          <VStack
+            justify='center'
+            padding='0.5rem'
+          >
+            <Text
+              fontSize='6xl'
+              text-align='center'
+            >
+              LinerDuper
+            </Text>
+            <Text
+              fontSize='lg'
+              text-align='center'
+            >
+              A tiny text editor for one-liner lovers!<br />
+              This works offline by WASI.
+            </Text>
+          </VStack>
+
+          <HStack
+            justify='center'
+            padding='1rem'
+          >
+            <CodeArea />
+            <ApplyButton
+              onClick={applyCode}
+            />
+          </HStack>
+
+          <StdinArea />
+        </StdinContext.Provider>
       </SourceContext.Provider>
-      <StdinContext.Provider value={{stdin: text, setStdin: setText}}>
-        <StdinArea />
-      </StdinContext.Provider>
     </>
   )
 }

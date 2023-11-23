@@ -1,6 +1,5 @@
 import { Textarea } from '@chakra-ui/react'
 import { useContext } from 'react'
-import './CodeArea.css'
 import { SourceContext } from '../contexts/SourceContext'
 
 function CodeArea() {
@@ -13,7 +12,7 @@ function CodeArea() {
   return (
     <Textarea className='codearea'
       placeholder='Input one-liner code here'
-      size='sm'
+      fontSize='xl'
       rows={1}
       height='auto'
       value={source}
