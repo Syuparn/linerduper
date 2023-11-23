@@ -1,24 +1,24 @@
 import { HStack, Text, VStack } from '@chakra-ui/react'
 import { useState } from 'react'
-import { headlessRunCode } from "@runno/runtime"
+import { headlessRunCode } from '@runno/runtime'
+import ApplyButton from './components/ApplyButton'
+import CodeArea from './components/CodeArea'
 import StdinArea from './components/StdinArea'
 import { StdinContext } from './contexts/StdinContext'
 import { SourceContext } from './contexts/SourceContext'
-import CodeArea from './components/CodeArea'
-import ApplyButton from './components/ApplyButton'
 
 function App() {
-  const [text, setText] = useState("")
-  const [sourceCode, setSourceCode] = useState("")
+  const [text, setText] = useState('')
+  const [sourceCode, setSourceCode] = useState('')
 
   const applyCode = () => {
-    headlessRunCode("ruby", sourceCode, text).then(value => {
-      if (value.resultType !== "complete") {
+    headlessRunCode('python', sourceCode, text).then(value => {
+      if (value.resultType !== 'complete') {
         console.log(`failed to apply source code: ${JSON.stringify(value)}`)
         return
       }
 
-      if (value.stderr !== "") {
+      if (value.stderr !== '') {
         alert(value.stderr)
         return
       }
