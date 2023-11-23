@@ -1,4 +1,4 @@
-import { HStack, Text, VStack } from '@chakra-ui/react'
+import { HStack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import ApplyButton from './components/ApplyButton'
 import CodeArea from './components/CodeArea'
@@ -35,24 +35,12 @@ function App() {
       <SourceContext.Provider value={{source: sourceCode, setSource: setSourceCode}}>
         <StdinContext.Provider value={{stdin: text, setStdin: setText}}>
           <CommandContext.Provider value={{command: command, setCommand: setCommand}}>
-            <VStack
-              justify='center'
-              padding='0.5rem'
+            <Text
+              fontSize='3xl'
+              paddingBottom='4rem'
             >
-              <Text
-                fontSize='6xl'
-                text-align='center'
-              >
-                LinerDuper
-              </Text>
-              <Text
-                fontSize='lg'
-                text-align='center'
-              >
-                A tiny text editor for one-liner lovers!<br />
-                This works offline by WASI.
-              </Text>
-            </VStack>
+              LinerDuper
+            </Text>
 
             <HStack
               justify='center'
