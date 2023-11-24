@@ -35,3 +35,5 @@ build_wasm https://github.com/Syuparn/Pangaea.git Pangaea pangaea v0.12.1
 build_wasm https://github.com/Syuparn/tmplscript.git tmplscript gotemplate v0.7.0
 
 build_gojq_wasm
+
+ls public/wasm
