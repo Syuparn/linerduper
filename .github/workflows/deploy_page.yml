@@ -9,7 +9,7 @@ jobs:
   build:
     permissions:
       # NOTE: give permission to push commits
-      repository-projects: write
+      contents: write
     name: Build
     runs-on: ubuntu-latest
     steps:
