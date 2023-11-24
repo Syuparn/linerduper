@@ -8,9 +8,12 @@ import { SourceContext } from './contexts/SourceContext'
 import CommandMenu from './components/CommandMenu'
 import { CommandContext } from './contexts/CommandContext'
 import { runnerCommands, wasiRunners } from './wasm/handler'
+import CopyButton from './components/CopyButton'
+import UndoButton from './components/UndoButton'
 
 function App() {
   const [text, setText] = useState('')
+  const [previousText, setPreviousText] = useState('')
   const [sourceCode, setSourceCode] = useState('')
   const [command, setCommand] = useState(runnerCommands[0])
   const [isLoading, setIsLoading] = useState(false)
@@ -31,11 +34,21 @@ function App() {
       }
 
       // HACK: remove last \n added automatically
+      setPreviousText(text)
       setText(value.stdout.trimEnd())
     })
 
     // start applying
     setIsLoading(true)
+  }
+
+  const copyText = () => {
+    navigator.clipboard.writeText(text)
+  }
+
+  const undo = () => {
+    setText(previousText)
+    setPreviousText('')
   }
 
   return (
@@ -61,6 +74,18 @@ function App() {
               <ApplyButton
                 onClick={applyCode}
                 isLoading={isLoading}
+              />
+            </HStack>
+            <HStack
+              justify='space-between'
+              padding='1rem'
+            >
+              <UndoButton
+                onClick={undo}
+                isDisabled={previousText === ''}
+              />
+              <CopyButton
+                onClick={copyText}
               />
             </HStack>
 
