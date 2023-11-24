@@ -17,6 +17,9 @@ function App() {
 
   const applyCode = () => {
     wasiRunners[command](sourceCode, text).then(value => {
+      // finish applying
+      setIsLoading(false)
+
       if (value.resultType !== 'complete') {
         console.log(`failed to apply source code: ${JSON.stringify(value)}`)
         return
@@ -27,9 +30,8 @@ function App() {
         return
       }
 
-      setText(value.stdout)
-      // finish applying
-      setIsLoading(false)
+      // HACK: remove last \n added automatically
+      setText(value.stdout.trimEnd())
     })
 
     // start applying
