@@ -7,8 +7,12 @@ export const wasiRunners: { [key: string]: WASIRunner } = {
   // HACK: add \n otherwise EOF does not work properly
   python: (sourceCode, text) => headlessRunCode('python', sourceCode, text+'\n'),
   ruby: (sourceCode, text) => headlessRunCode('ruby', sourceCode, text+'\n'),
-  quickjs: (sourceCode, text) => headlessRunCode('quickjs', sourceCode, text+'\n'),
+  javascript: (sourceCode, text) => headlessRunCode('quickjs', sourceCode, text+'\n'),
+  awk: (sourceCode, text) => wrapWASIRunner('/wasm/awk.wasm', text+'\n', [sourceCode]),
+  jq: (sourceCode, text) => wrapWASIRunner('/wasm/jq.wasm', text+'\n', [sourceCode]),
+  gotemplate: (sourceCode, text) => wrapWASIRunner('/wasm/gotemplate.wasm', text+'\n', [sourceCode]),
   pangaea: (sourceCode, text) => wrapWASIRunner('/wasm/pangaea.wasm', text+'\n', ['-e', sourceCode]),
+  // NOTE: php-cgi STDIN does not work
 }
 
 export const runnerCommands = Object.keys(wasiRunners)
