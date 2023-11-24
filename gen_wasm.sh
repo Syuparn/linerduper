@@ -23,7 +23,7 @@ build_gojq_wasm() {
     git checkout v0.12.13
     cd cmd/gojq
     GOOS=wasip1 GOARCH=wasm go build -o jq.wasm
-    mv jq.wasm ../../../../public/wasm
+    mv jq.wasm ../../../../public/wasm/jq.wasm
     cd ../../../..
 }
 
