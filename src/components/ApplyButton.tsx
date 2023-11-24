@@ -1,10 +1,11 @@
 import { Button } from '@chakra-ui/react'
 
-function ApplyButton({ onClick }: { onClick: () => void }) {
+function ApplyButton({ onClick, isLoading }: { onClick: () => void, isLoading: boolean }) {
   return (
     <Button
       colorScheme='gray'
       onClick={onClick}
+      isLoading={isLoading}
     >
       Apply
     </Button>

@@ -13,6 +13,7 @@ function App() {
   const [text, setText] = useState('')
   const [sourceCode, setSourceCode] = useState('')
   const [command, setCommand] = useState(runnerCommands[0])
+  const [isLoading, setIsLoading] = useState(false)
 
   const applyCode = () => {
     wasiRunners[command](sourceCode, text).then(value => {
@@ -27,7 +28,12 @@ function App() {
       }
 
       setText(value.stdout)
+      // finish applying
+      setIsLoading(false)
     })
+
+    // start applying
+    setIsLoading(true)
   }
 
   return (
@@ -52,6 +58,7 @@ function App() {
               <CodeArea />
               <ApplyButton
                 onClick={applyCode}
+                isLoading={isLoading}
               />
             </HStack>
 
