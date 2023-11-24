@@ -23,12 +23,13 @@ build_gojq_wasm() {
     git checkout v0.12.13
     cd cmd/gojq
     GOOS=wasip1 GOARCH=wasm go build -o jq.wasm
-    mv jq.wasm ../../../../public/wasm/jq.wasm
+    mv jq.wasm ../../../../public/wasm
     cd ../../../..
 }
 
 
 mkdir -p tmp
+mkdir -p public/wasm
 
 build_wasm https://github.com/benhoyt/goawk.git goawk awk v1.25.0
 build_wasm https://github.com/Syuparn/Pangaea.git Pangaea pangaea v0.12.1
