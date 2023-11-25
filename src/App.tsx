@@ -1,4 +1,4 @@
-import { HStack, Text } from '@chakra-ui/react'
+import { Box, HStack, Image } from '@chakra-ui/react'
 import { useState } from 'react'
 import ApplyButton from './components/ApplyButton'
 import CodeArea from './components/CodeArea'
@@ -56,12 +56,15 @@ function App() {
       <SourceContext.Provider value={{source: sourceCode, setSource: setSourceCode}}>
         <StdinContext.Provider value={{stdin: text, setStdin: setText}}>
           <CommandContext.Provider value={{command: command, setCommand: setCommand}}>
-            <Text
-              fontSize='3xl'
-              paddingBottom='4rem'
+            <Box
+              paddingBottom='3rem'
             >
-              LinerDuper
-            </Text>
+              <Image
+                src='/images/linerduper.png'
+                alt='linerduper'
+              />
+            </Box>
+
 
             <HStack
               justify='center'

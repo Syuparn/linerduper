@@ -7,7 +7,8 @@ https://syuparn.github.io/linerduper/
 
 # Dependencies
 
-- WASI engine: [Runno](https://runno.dev/#know-runno)
+- WASI engine:
+  - [Runno](https://runno.dev/#know-runno)
 - UI:
   - [React](https://react.dev/)
   - [Chakra UI](https://chakra-ui.com/)
@@ -19,6 +20,8 @@ https://syuparn.github.io/linerduper/
 - GitHub Pages:
   - [actions-gh-pages](https://github.com/peaceiris/actions-gh-pages)
   - [coi-serviceworker](https://github.com/gzuidhof/coi-serviceworker)
+- Logo:
+  - font: [Line](https://booth.pm/ja/items/4144426)
 
 # For developers
 

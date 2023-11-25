@@ -8,7 +8,8 @@ export const theme = extendTheme({
         backgroundColor: 'black',
         color: 'white',
         fontFamily: 'monospace',
-        padding: '1rem',
+        padding: '0.5rem',
+        paddingRight: '1rem',
       },
       html: {
         height: '100%',
