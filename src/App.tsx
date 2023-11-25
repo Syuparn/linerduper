@@ -1,4 +1,4 @@
-import { Box, HStack, Image } from '@chakra-ui/react'
+import { Box, HStack } from '@chakra-ui/react'
 import { useState } from 'react'
 import ApplyButton from './components/ApplyButton'
 import CodeArea from './components/CodeArea'
