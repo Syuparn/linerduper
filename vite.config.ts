@@ -17,4 +17,8 @@ const crossOriginPolicy = {
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), crossOriginPolicy],
+  // HACK: fix link path because endpoint of GitHub pages is https://syuparn.github.io/linerduper/ (not root)
+  base: process.env.GITHUB_PAGES
+    ? 'linerduper'
+    : './'
 })

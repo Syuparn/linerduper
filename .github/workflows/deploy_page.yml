@@ -32,6 +32,9 @@ jobs:
         node-version: 20
 
     - name: Build frontend
+      # HACK: pass env to fix link path
+      env:
+        GITHUB_PAGES: true
       run: |
         npm install
         npm run build
