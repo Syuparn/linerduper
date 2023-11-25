@@ -3,15 +3,18 @@ import { WASI } from "@runno/wasi"
 
 type WASIRunner = (sourceCode: string, text: string) => Promise<RunResult>
 
+// HACK: fix link path because endpoint of GitHub pages is https://syuparn.github.io/linerduper/ (not root)
+const basePath = process.env.GITHUB_PAGES ? '/linerduper' : ''
+
 export const wasiRunners: { [key: string]: WASIRunner } = {
   // HACK: add \n otherwise EOF does not work properly
   python: (sourceCode, text) => headlessRunCode('python', sourceCode, text+'\n'),
   ruby: (sourceCode, text) => headlessRunCode('ruby', sourceCode, text+'\n'),
   javascript: (sourceCode, text) => headlessRunCode('quickjs', sourceCode, text+'\n'),
-  awk: (sourceCode, text) => wrapWASIRunner('/wasm/awk.wasm', text+'\n', [sourceCode]),
-  jq: (sourceCode, text) => wrapWASIRunner('/wasm/jq.wasm', text+'\n', [sourceCode]),
-  gotemplate: (sourceCode, text) => wrapWASIRunner('/wasm/gotemplate.wasm', text+'\n', [sourceCode]),
-  pangaea: (sourceCode, text) => wrapWASIRunner('/wasm/pangaea.wasm', text+'\n', ['-e', sourceCode]),
+  awk: (sourceCode, text) => wrapWASIRunner(basePath+'/wasm/awk.wasm', text+'\n', [sourceCode]),
+  jq: (sourceCode, text) => wrapWASIRunner(basePath+'/wasm/jq.wasm', text+'\n', [sourceCode]),
+  gotemplate: (sourceCode, text) => wrapWASIRunner(basePath+'/wasm/gotemplate.wasm', text+'\n', [sourceCode]),
+  pangaea: (sourceCode, text) => wrapWASIRunner(basePath+'/wasm/pangaea.wasm', text+'\n', ['-e', sourceCode]),
   // NOTE: php-cgi STDIN does not work
 }
 
