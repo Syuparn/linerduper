@@ -16,7 +16,9 @@ https://syuparn.github.io/linerduper/
   - [goawk](https://github.com/benhoyt/goawk)
   - [tmplscript](https://github.com/Syuparn/tmplscript)
   - [pangaea](https://github.com/Syuparn/Pangaea)
-- GitHub Pages: [actions-gh-pages](https://github.com/peaceiris/actions-gh-pages)
+- GitHub Pages:
+  - [actions-gh-pages](https://github.com/peaceiris/actions-gh-pages)
+  - [coi-serviceworker](https://github.com/gzuidhof/coi-serviceworker)
 
 # For developers
 
