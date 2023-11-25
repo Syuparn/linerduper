@@ -3,8 +3,8 @@ import { WASI } from "@runno/wasi"
 
 type WASIRunner = (sourceCode: string, text: string) => Promise<RunResult>
 
-// HACK: fix link path because endpoint of GitHub pages is https://syuparn.github.io/linerduper/ (not root)
-const basePath = process.env.GITHUB_PAGES ? '/linerduper' : ''
+// HACK: fix link path because endpoint of GitHub pages is not root ('/wasm/awk.wasm' is resolved to 'https://syuparn.github.io/wasm/awk.wasm')
+const basePath = 'https://syuparn.github.io/linerduper/'
 
 export const wasiRunners: { [key: string]: WASIRunner } = {
   // HACK: add \n otherwise EOF does not work properly
