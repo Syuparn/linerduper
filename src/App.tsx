@@ -10,6 +10,7 @@ import { CommandContext } from './contexts/CommandContext'
 import { runnerCommands, wasiRunners } from './wasm/handler'
 import CopyButton from './components/CopyButton'
 import UndoButton from './components/UndoButton'
+import Logo from './components/Logo'
 
 function App() {
   const [text, setText] = useState('')
@@ -59,10 +60,7 @@ function App() {
             <Box
               paddingBottom='3rem'
             >
-              <Image
-                src='/images/linerduper.png'
-                alt='linerduper'
-              />
+              <Logo />
             </Box>
 
 
