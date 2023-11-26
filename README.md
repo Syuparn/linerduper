@@ -1,6 +1,8 @@
 # linerduper
 A tiny text editor for one-liner lovers! (working offline)
 
+![linerduper](/docs/images/linerduper.png) 
+
 # Try it!
 
 https://syuparn.github.io/linerduper/
