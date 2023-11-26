@@ -13,6 +13,7 @@ export const wasiRunners: { [key: string]: WASIRunner } = {
   javascript: (sourceCode, text) => headlessRunCode('quickjs', sourceCode, text+'\n'),
   awk: (sourceCode, text) => wrapWASIRunner(basePath+'/wasm/awk.wasm', text+'\n', [sourceCode]),
   jq: (sourceCode, text) => wrapWASIRunner(basePath+'/wasm/jq.wasm', text+'\n', [sourceCode]),
+  'jq -r': (sourceCode, text) => wrapWASIRunner(basePath+'/wasm/jq.wasm', text+'\n', ['-r', sourceCode]),
   gotemplate: (sourceCode, text) => wrapWASIRunner(basePath+'/wasm/gotemplate.wasm', text+'\n', [sourceCode]),
   pangaea: (sourceCode, text) => wrapWASIRunner(basePath+'/wasm/pangaea.wasm', text+'\n', ['-e', sourceCode]),
   // NOTE: php-cgi STDIN does not work

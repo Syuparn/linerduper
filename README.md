@@ -7,6 +7,9 @@ A tiny text editor for one-liner lovers! (working offline)
 
 https://syuparn.github.io/linerduper/
 
+![demo](/docs/images/linerduper_demo.gif) 
+
+
 # Dependencies
 
 - WASI engine:
