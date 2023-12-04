@@ -13,7 +13,7 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
-    "@runno/runtime": "^0.6.1",
+    "@runno/runtime": "^0.6.2",
     "@runno/wasi": "^0.6.1",
     "coi-serviceworker": "^0.1.7",
     "patch-package": "^8.0.0",
